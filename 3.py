@@ -44,18 +44,25 @@ while gameExit:
                 x_coordinate_change = 0
         
         
-        if event.type == pygame.KEYUP:
+        '''if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT: 
                 x_coordinate_change = 0
             if event.key == event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                 y_coordinate_change = 0
-        #print(event)
+        #print(event)'''
 
 
     x_coordinate += x_coordinate_change
     y_coordinate += y_coordinate_change
 
-
+    if x_coordinate > 1280:
+        x_coordinate = 0
+    if  x_coordinate < 0:
+        x_coordinate = 1280
+    if y_coordinate > 720:
+        y_coordinate = 0  
+    if y_coordinate < 0:
+        y_coordinate = 720
     gameDisplay.fill(white)
     
     
