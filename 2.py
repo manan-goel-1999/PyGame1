@@ -50,14 +50,6 @@ while gameExit:
 
     x_coordinate += x_coordinate_change
     y_coordinate += y_coordinate_change
-    if x_coordinate > 1280:
-        x_coordinate = 0
-    if y_coordinate > 720:
-        y_coordinate = 0
-    if x_coordinate < 0:
-        x_coordinate = 1280
-    if y_coordinate < 0:
-        y_coordinate = 720 
 
 
     gameDisplay.fill(white)
