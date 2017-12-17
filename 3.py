@@ -20,6 +20,8 @@ y_coordinate = displayheight/2
 x_coordinate_change = 0
 y_coordinate_change = 0
 
+FPS = 45
+blocksize = 10
 
 clock = pygame.time.Clock()
 #make a clock object
@@ -33,16 +35,16 @@ while gameExit:
         
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                x_coordinate_change = -10
+                x_coordinate_change = -blocksize
                 y_coordinate_change = 0
             if event.key == pygame.K_RIGHT:
-                x_coordinate_change = 10
+                x_coordinate_change = blocksize
                 y_coordinate_change = 0
             if event.key == pygame.K_UP:
-                y_coordinate_change = -10
+                y_coordinate_change = -blocksize
                 x_coordinate_change = 0
             if event.key == pygame.K_DOWN:
-                y_coordinate_change = 10
+                y_coordinate_change = blocksize
                 x_coordinate_change = 0
         
         
@@ -72,14 +74,14 @@ while gameExit:
     #surface,colour,position of top left,width,height    
     
     
-    gameDisplay.fill(red,rect = [x_coordinate,y_coordinate,10,10])
+    gameDisplay.fill(red,rect = [x_coordinate,y_coordinate,blocksize,blocksize])
     #faster way to make shape
     
     
     pygame.display.update()
     
     
-    clock.tick(60)                  
+    clock.tick(FPS)                  
     #specify number of frames per second
 
 
