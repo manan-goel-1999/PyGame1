@@ -1,7 +1,9 @@
 import pygame
 pygame.init()
 #Make Surface and give name to it
-gameDisplay = pygame.display.set_mode((1280,720))
+displayheight = 720
+displaywidth = 1280
+gameDisplay = pygame.display.set_mode((displaywidth,displayheight))
 pygame.display.set_caption('Slither')
 pygame.display.update()
 
@@ -13,8 +15,8 @@ red = (255,0,0)
 #give color as a tuple in order RGB
 
 
-x_coordinate = 300
-y_coordinate = 600
+x_coordinate = displaywidth/2
+y_coordinate = displayheight/2
 x_coordinate_change = 0
 y_coordinate_change = 0
 
@@ -55,14 +57,14 @@ while gameExit:
     x_coordinate += x_coordinate_change
     y_coordinate += y_coordinate_change
 
-    if x_coordinate > 1280:
+    if x_coordinate > displaywidth:
         x_coordinate = 0
     if  x_coordinate < 0:
-        x_coordinate = 1280
-    if y_coordinate > 720:
+        x_coordinate = displaywidth
+    if y_coordinate > displayheight:
         y_coordinate = 0  
     if y_coordinate < 0:
-        y_coordinate = 720
+        y_coordinate = displayheight
     gameDisplay.fill(white)
     
     
