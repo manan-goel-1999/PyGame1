@@ -1,6 +1,6 @@
 import pygame
 import time
-
+import random
 '''displayheight = input("Enter Height of Screen")
 displaywidth = input("Enter Width of Screen")'''
 pygame.init()
@@ -93,14 +93,16 @@ def GameLoop():
             GameOver = True
         if y_coordinate < 0:
             GameOver = True
-        #gameDisplay.fill(white)
+        gameDisplay.fill(white)
 
 
-        #pygame.draw.rect(gameDisplay,red,[640,360,10,100])
+        pygame.draw.rect(gameDisplay,red,[x_coordinate,y_coordinate,blocksize,blocksize])
         #surface,colour,position of top left,width,height    
+        circlex = random.randrange(0,displaywidth)
+        circley = random.randrange(0,displayheight)
+        pygame.draw.circle(gameDisplay,black,[circlex,circley],int(blocksize/2))
 
-
-        gameDisplay.fill(red,rect = [x_coordinate,y_coordinate,blocksize,blocksize])
+        #gameDisplay.fill(red,rect = [x_coordinate,y_coordinate,blocksize,blocksize])
         #faster way to make shape
 
 
