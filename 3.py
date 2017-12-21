@@ -1,8 +1,10 @@
 import pygame
+displayheight = input("Enter Height of Screen")
+displaywidth = input("Enter Width of Screen")
 pygame.init()
 #Make Surface and give name to it
-displayheight = 720
-displaywidth = 1280
+displayheight = int(displayheight)
+displaywidth = int(displaywidth)
 gameDisplay = pygame.display.set_mode((displaywidth,displayheight))
 pygame.display.set_caption('Slither')
 pygame.display.update()
