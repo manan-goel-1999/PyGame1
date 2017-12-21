@@ -1,8 +1,7 @@
 import pygame
 import time
 import random
-'''displayheight = input("Enter Height of Screen")
-displaywidth = input("Enter Width of Screen")'''
+
 pygame.init()
 
 displayheight = 720                                                     #Make Surface and give name to it
@@ -103,7 +102,9 @@ def GameLoop():
 
         gameDisplay.fill(white)
         
-        pygame.draw.rect(gameDisplay,black,[circlex,circley,blocksize,blocksize])
+        applesize = blocksize*2
+
+        pygame.draw.rect(gameDisplay,black,[circlex,circley,applesize,applesize])
         
         head = []
         head.append(x_coordinate)
@@ -120,13 +121,13 @@ def GameLoop():
                     GameOver = True
         
         snake(blocksize,body)
-
-        #print(body)
-
-        if x_coordinate == circlex and y_coordinate == circley:
-            circlex = round(random.randrange(0,displaywidth-blocksize)/20.0)*20
-            circley = round(random.randrange(0,displayheight-blocksize)/20.0)*20
-            bodlength += 1
+            
+        if x_coordinate >= circlex and x_coordinate <= circlex + applesize:
+            if y_coordinate >= circley and y_coordinate <= circley + applesize:
+                circlex = round(random.randrange(0,displaywidth-blocksize)/20.0)*20
+                circley = round(random.randrange(0,displayheight-blocksize)/20.0)*20
+                bodlength += 1
+        
             #snakelegth += blocksize
         '''if bodlength > 1:
             for element in body[:1]:
