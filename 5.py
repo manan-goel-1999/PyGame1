@@ -38,7 +38,7 @@ def GameLoop():
     snakelegth = 10
     circlex = round(random.randrange(0,displaywidth-blocksize)/20.0)*20
     circley = round(random.randrange(0,displayheight-blocksize)/20.0)*20
-
+    count = 1
     body = []
     bodlength = 5
 
@@ -102,8 +102,10 @@ def GameLoop():
 
         gameDisplay.fill(white)
         
-        applesize = blocksize*2
-
+        if count%5 is 0:
+            applesize = blocksize*2
+        else:
+            applesize = blocksize
         pygame.draw.rect(gameDisplay,black,[circlex,circley,applesize,applesize])
         
         head = []
@@ -126,6 +128,7 @@ def GameLoop():
             if y_coordinate >= circley and y_coordinate <= circley + applesize:
                 circlex = round(random.randrange(0,displaywidth-blocksize)/20.0)*20
                 circley = round(random.randrange(0,displayheight-blocksize)/20.0)*20
+                count += 1
                 bodlength += 1
         
             #snakelegth += blocksize
@@ -141,7 +144,6 @@ def GameLoop():
 
 
         clock.tick(FPS)                 #specify number of frames per second         
-    
     pygame.quit()
     quit()
 
