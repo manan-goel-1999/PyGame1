@@ -80,14 +80,6 @@ def GameLoop():
                     y_coordinate_change = blocksize
                     x_coordinate_change = 0
 
-
-            '''if event.type == pygame.KEYUP:
-                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT: 
-                    x_coordinate_change = 0
-                if event.key == event.key == pygame.K_UP or event.key == pygame.K_DOWN:
-                    y_coordinate_change = 0
-            #print(event)'''
-
         if x_coordinate > displaywidth:
             GameOver = True
         if  x_coordinate < 0:
@@ -114,8 +106,7 @@ def GameLoop():
 
         body.append(head)
         if len(body) > bodlength:
-            del body[0]
-        #surface,colour,position of top left,width,height   
+            del body[0]                 #Remove Last Addition to the list
 
         if bodlength > 5:
             for element in body[:-1]:
@@ -139,11 +130,7 @@ def GameLoop():
         gameDisplay.blit(text,[0,0])
         #print(score)
             #snakelegth += blocksize
-        '''if bodlength > 1:
-            for element in body[:1]:
-                if element == head:
-                    GameOver = True
-        #gameDisplay.fill(red,rect = [x_coordinate,y_coordinate,blocksize,blocksize])
+        '''#gameDisplay.fill(red,rect = [x_coordinate,y_coordinate,blocksize,blocksize])
         #faster way to make shape'''
 
 
