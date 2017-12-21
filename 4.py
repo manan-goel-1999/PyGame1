@@ -4,22 +4,20 @@ import random
 '''displayheight = input("Enter Height of Screen")
 displaywidth = input("Enter Width of Screen")'''
 pygame.init()
-#Make Surface and give name to it
-displayheight = 720
-displaywidth = 1280
-gameDisplay = pygame.display.set_mode((displaywidth,displayheight))
-pygame.display.set_caption('Slither')
+
+displayheight = 720                                                     #Make Surface and give name to it
+displaywidth = 1280                                                     #Make Surface and give name to it
+gameDisplay = pygame.display.set_mode((displaywidth,displayheight))     #Make Surface and give name to it
+pygame.display.set_caption('Slither')                                   #Make Surface and give name to it
 pygame.display.update()
 
-white = (255,255,255)
-red = (255,0,0)
-black = (0,0,0)
-#give color as a tuple in order RGB
+white = (255,255,255)       #give color as a tuple in order RGB
+red = (255,0,0)             #give color as a tuple in order RGB
+black = (0,0,0)             #give color as a tuple in order RGB
 
-#Make Font Object
-font = pygame.font.SysFont(None,45)
+font = pygame.font.SysFont(None,45)         #Make Font Object
 
-FPS = 45
+FPS = 15
 blocksize = 10
 
 #Display Message
@@ -29,11 +27,17 @@ def MessageDisplay(msg,color):
 
 clock = pygame.time.Clock()
 #make a clock object
+def snake(x_coordinate,y_coordinate,blocksize):
+    pygame.draw.rect(gameDisplay,red,[x_coordinate,y_coordinate,blocksize,blocksize])
+
 
 #Actual Game Loop
 def GameLoop():
     game = True
     GameOver =  False
+    snakelegth = 10
+    circlex = round(random.randrange(0,displaywidth-blocksize)/20.0)*20
+    circley = round(random.randrange(0,displayheight-blocksize)/20.0)*20
 
     x_coordinate = displaywidth/2
     x_coordinate_change = 0
@@ -81,10 +85,6 @@ def GameLoop():
                     y_coordinate_change = 0
             #print(event)'''
 
-
-        x_coordinate += x_coordinate_change
-        y_coordinate += y_coordinate_change
-
         if x_coordinate > displaywidth:
             GameOver = True
         if  x_coordinate < 0:
@@ -93,15 +93,21 @@ def GameLoop():
             GameOver = True
         if y_coordinate < 0:
             GameOver = True
+
+        x_coordinate += x_coordinate_change
+        y_coordinate += y_coordinate_change
+
         gameDisplay.fill(white)
-
-
-        pygame.draw.rect(gameDisplay,red,[x_coordinate,y_coordinate,blocksize,blocksize])
+        
+        pygame.draw.rect(gameDisplay,black,[circlex,circley,blocksize,blocksize])
+        snake(x_coordinate,y_coordinate,blocksize)
         #surface,colour,position of top left,width,height    
-        circlex = random.randrange(0,displaywidth)
-        circley = random.randrange(0,displayheight)
-        pygame.draw.circle(gameDisplay,black,[circlex,circley],int(blocksize/2))
-
+        
+        if x_coordinate == circlex and y_coordinate == circley:
+            circlex = round(random.randrange(0,displaywidth-blocksize)/20.0)*20
+            circley = round(random.randrange(0,displayheight-blocksize)/20.0)*20
+            #snakelegth += blocksize
+            
         #gameDisplay.fill(red,rect = [x_coordinate,y_coordinate,blocksize,blocksize])
         #faster way to make shape
 
@@ -109,8 +115,7 @@ def GameLoop():
         pygame.display.update()
 
 
-        clock.tick(FPS)                  
-        #specify number of frames per second
+        clock.tick(FPS)                 #specify number of frames per second         
     
     pygame.quit()
     quit()
