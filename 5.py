@@ -40,6 +40,10 @@ def GameLoop():
     circlex = round(random.randrange(0,displaywidth-blocksize)/20.0)*20
     circley = round(random.randrange(0,displayheight-blocksize)/20.0)*20
 
+    body = []
+    bodlength = 5
+
+
     x_coordinate = displaywidth/2
     x_coordinate_change = 0
     y_coordinate_change = 0
@@ -102,20 +106,21 @@ def GameLoop():
         
         pygame.draw.rect(gameDisplay,black,[circlex,circley,blocksize,blocksize])
         
-        body = []
-
         head = []
         head.append(x_coordinate)
         head.append(y_coordinate)
 
         body.append(head)
-
-        snake(blocksize,body)
+        if len(body) > bodlength:
+            del body[0]
         #surface,colour,position of top left,width,height    
         
+        snake(blocksize,body)
+
         if x_coordinate == circlex and y_coordinate == circley:
             circlex = round(random.randrange(0,displaywidth-blocksize)/20.0)*20
             circley = round(random.randrange(0,displayheight-blocksize)/20.0)*20
+            bodlength += 1
             #snakelegth += blocksize
             
         #gameDisplay.fill(red,rect = [x_coordinate,y_coordinate,blocksize,blocksize])
