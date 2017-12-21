@@ -17,13 +17,13 @@ black = (0,0,0)             #give color as a tuple in order RGB
 
 font = pygame.font.SysFont(None,45)         #Make Font Object
 
-FPS = 15
+FPS = 12
 blocksize = 10
 
 #Display Message
 def MessageDisplay(msg,color):
     text = font.render(msg,True,color)                          #Render Text of Specific Color and Size
-    gameDisplay.blit(text, [displaywidth/2,displayheight/2])    #Render The Message to the gameDisplay
+    gameDisplay.blit(text, [displaywidth/4,displayheight/4])    #Render The Message to the gameDisplay
 
 clock = pygame.time.Clock()
 #make a clock object
@@ -42,7 +42,6 @@ def GameLoop():
 
     body = []
     bodlength = 5
-
 
     x_coordinate = displaywidth/2
     x_coordinate_change = 0
@@ -113,18 +112,28 @@ def GameLoop():
         body.append(head)
         if len(body) > bodlength:
             del body[0]
-        #surface,colour,position of top left,width,height    
+        #surface,colour,position of top left,width,height   
+
+        if bodlength > 5:
+            for element in body[:-1]:
+                if element == head:
+                    GameOver = True
         
         snake(blocksize,body)
+
+        #print(body)
 
         if x_coordinate == circlex and y_coordinate == circley:
             circlex = round(random.randrange(0,displaywidth-blocksize)/20.0)*20
             circley = round(random.randrange(0,displayheight-blocksize)/20.0)*20
             bodlength += 1
             #snakelegth += blocksize
-            
+        '''if bodlength > 1:
+            for element in body[:1]:
+                if element == head:
+                    GameOver = True
         #gameDisplay.fill(red,rect = [x_coordinate,y_coordinate,blocksize,blocksize])
-        #faster way to make shape
+        #faster way to make shape'''
 
 
         pygame.display.update()
