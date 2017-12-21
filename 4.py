@@ -13,6 +13,7 @@ pygame.display.update()
 
 white = (255,255,255)
 red = (255,0,0)
+black = (0,0,0)
 #give color as a tuple in order RGB
 
 #Make Font Object
@@ -31,16 +32,32 @@ clock = pygame.time.Clock()
 
 #Actual Game Loop
 def GameLoop():
-    gameExit = True
+    game = True
+    GameOver =  False
+
     x_coordinate = displaywidth/2
     x_coordinate_change = 0
     y_coordinate_change = 0
     y_coordinate = displayheight/2
-    while gameExit:
+    while game:
+        while GameOver == True:
+            gameDisplay.fill(black)
+            MessageDisplay("Game Over, Enter A to Play Again and Q to Exit",white)
+            pygame.display.update()
+
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        game = False
+                        GameOver = False
+                    if event.key == pygame.K_a:
+                        GameLoop()
+                if event.type == pygame.QUIT:
+                    game = False
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                gameExit = False
-
+                game = False
+                
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
@@ -69,14 +86,14 @@ def GameLoop():
         y_coordinate += y_coordinate_change
 
         if x_coordinate > displaywidth:
-            gameExit = False
+            GameOver = True
         if  x_coordinate < 0:
-            gameExit = False
+            GameOver = True
         if y_coordinate > displayheight:
-            gameExit = False
+            GameOver = True
         if y_coordinate < 0:
-            gameExit = False
-        gameDisplay.fill(white)
+            GameOver = True
+        #gameDisplay.fill(white)
 
 
         #pygame.draw.rect(gameDisplay,red,[640,360,10,100])
@@ -92,10 +109,7 @@ def GameLoop():
 
         clock.tick(FPS)                  
         #specify number of frames per second
-
-    MessageDisplay("You Lose HAHAHAHAHA",red)
-    pygame.display.update()
-    time.sleep(2)
+    
     pygame.quit()
     quit()
 
