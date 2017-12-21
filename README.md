@@ -8,5 +8,5 @@ sudo apt install python3-pip
 
 pip3 install pygame
 
-python3 2.py
+python3 *.py
 
