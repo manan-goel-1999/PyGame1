@@ -16,7 +16,6 @@ black = (0,0,0)             #give color as a tuple in order RGB
 
 font = pygame.font.SysFont(None,45)         #Make Font Object
 
-FPS = 12
 blocksize = 10
 
 #Display Message
@@ -33,6 +32,7 @@ def snake(blocksize,snakebody):
 
 #Actual Game Loop
 def GameLoop():
+    FPS = 12
     game = True
     GameOver =  False
     snakelegth = 10
@@ -64,7 +64,7 @@ def GameLoop():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 game = False
-                
+
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
@@ -93,13 +93,13 @@ def GameLoop():
         y_coordinate += y_coordinate_change
 
         gameDisplay.fill(white)
-        
+
         if count%5 is 0:
             applesize = blocksize*2
         else:
             applesize = blocksize
         pygame.draw.rect(gameDisplay,black,[circlex,circley,applesize,applesize])
-        
+
         head = []
         head.append(x_coordinate)
         head.append(y_coordinate)
@@ -112,20 +112,21 @@ def GameLoop():
             for element in body[:-1]:
                 if element == head:
                     GameOver = True
-        
+
         snake(blocksize,body)
-            
+
         if x_coordinate >= circlex and x_coordinate <= circlex + applesize:
             if y_coordinate >= circley and y_coordinate <= circley + applesize:
                 circlex = round(random.randrange(0,displaywidth-blocksize)/20.0)*20
                 circley = round(random.randrange(0,displayheight-blocksize)/20.0)*20
                 count += 1
                 bodlength += 1
+                FPS += 4 
                 if count%5 is 0:
                     score += 20
                 else:
-                    score += 10 
-        
+                    score += 10
+
         text = font.render("Score : " + str(score),True,black)
         gameDisplay.blit(text,[0,0])
         #print(score)
@@ -137,7 +138,7 @@ def GameLoop():
         pygame.display.update()
 
 
-        clock.tick(FPS)                 #specify number of frames per second         
+        clock.tick(FPS)                 #specify number of frames per second
     pygame.quit()
     quit()
 
