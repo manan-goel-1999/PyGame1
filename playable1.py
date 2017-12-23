@@ -38,7 +38,7 @@ def GameLoop():
     snakelegth = 10
     circlex = round(random.randrange(0,displaywidth-blocksize)/20.0)*20
     circley = round(random.randrange(0,displayheight-blocksize)/20.0)*20
-    count = 1
+    count = 0
     body = []
     bodlength = 5
     score = 0
@@ -81,20 +81,20 @@ def GameLoop():
                     x_coordinate_change = 0
 
         if x_coordinate > displaywidth:
-            GameOver = True
+            x_coordinate = 0
         if  x_coordinate < 0:
-            GameOver = True
+            x_coordinate = displaywidth
         if y_coordinate > displayheight:
-            GameOver = True
+            y_coordinate = 0
         if y_coordinate < 0:
-            GameOver = True
+            y_coordinate = displayheight
 
         x_coordinate += x_coordinate_change
         y_coordinate += y_coordinate_change
 
         gameDisplay.fill(white)
 
-        if count%5 is 0:
+        if count%5 is 0 and count is not 0:
             applesize = blocksize*2
         else:
             applesize = blocksize
