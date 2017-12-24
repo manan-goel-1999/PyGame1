@@ -4,6 +4,8 @@ Run Following Commands
 
 git clone https://github.com/manan-goel-1999/PyGame1
 
+cd Pygame1
+
 sudo apt-get install python3
 
 sudo apt install python3-pip
