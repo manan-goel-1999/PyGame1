@@ -59,8 +59,8 @@ def GameLoop():
     game = True
     GameOver =  False
     #snakelegth = 10
-    circlex = round(random.randrange(0,displaywidth-blocksize)/20.0)*20
-    circley = round(random.randrange(0,displayheight-blocksize)/20.0)*20
+    circlex = round(random.randrange(0,displaywidth-blocksize)/24.0)*24
+    circley = round(random.randrange(0,displayheight-blocksize)/24.0)*24
     count = 1
     body = []
     bodlength = 5
