@@ -10,5 +10,5 @@ sudo apt install python3-pip
 
 pip3 install pygame
 
-python3 playable1.py
+python3 playable1.0.py
 
