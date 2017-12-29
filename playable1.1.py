@@ -55,13 +55,17 @@ def snake(blocksize,snakebody):
 pause = False
 
 
-def pausegame(pause):
-    while pause is True:
-        for event in pygame.event.get():
-            print(event)
-            if event.key == pygame.K_r:
-                pause = False
-                return
+def pausegame(pause):                                                 #Function to Pause Game                  
+    while pause is True:                                              #Function to Pause Game
+        TextSurface, TextRect = text_object("Game Paused Press R to Resume",red)
+        TextRect.center = (displaywidth/4), (displayheight/4)
+        gameDisplay.blit(TextSurface,TextRect)
+        pygame.display.update()
+        for event in pygame.event.get():                              #Function to Pause Game  
+            print(event)                                              #Function to Pause Game
+            if event.key == pygame.K_r:                               #Function to Pause Game
+                pause = False                                         #Function to Pause Game
+                return                                                #Function to Pause Game
 
 #Actual Game Loop
 def GameLoop():
@@ -184,8 +188,8 @@ def GameLoop():
                 circley = round(random.randrange(0,displayheight-blocksize)/24.0)*24
                 count += 1
                 bodlength += 1
-                #FPS += 4 
-                if count%6 is 0:
+                FPS += 1 
+                if applesize is blocksize*2:
                     score += 20
                 else:
                     score += 10
