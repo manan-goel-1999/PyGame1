@@ -58,7 +58,7 @@ pause = False
 def pausegame(pause):                                                 #Function to Pause Game                  
     while pause is True:                                              #Function to Pause Game
         TextSurface, TextRect = text_object("Game Paused Press R to Resume",red)
-        TextRect.center = (displaywidth/4), (displayheight/4)
+        TextRect.center = (displaywidth/2), (displayheight/4)
         gameDisplay.blit(TextSurface,TextRect)
         pygame.display.update()
         for event in pygame.event.get():                              #Function to Pause Game  
