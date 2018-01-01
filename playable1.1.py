@@ -1,6 +1,7 @@
 import pygame
 import time
 import random
+import os
 
 pygame.init()
 
@@ -83,6 +84,12 @@ def GameLoop():
     x_coordinate_change = 0
     y_coordinate_change = 0
     y_coordinate = displayheight/2
+
+    highscore = open("highscore.txt",'r')
+    high = highscore.readline()
+    #print(high)
+    high = int(high)
+
     while game:
         global direction
         global pause
@@ -202,6 +209,17 @@ def GameLoop():
         #faster way to make shape'''
 
 
+        pygame.display.update()
+        if score > high:
+            high = score
+            highscore1 = open("highscore1.txt",'w')
+            highscore1.write(str(high))
+            os.system("rm highscore.txt")
+            os.system("mv highscore1.txt highscore.txt")
+        
+        print(high)
+        highest = font.render("Highest Score : " + str(high),True,black)
+        gameDisplay.blit(highest,[round(0.6*displaywidth),0])
         pygame.display.update()
 
         #print (x_coordinate , y_coordinate)
