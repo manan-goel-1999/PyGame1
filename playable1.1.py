@@ -217,7 +217,7 @@ def GameLoop():
             os.system("rm highscore.txt")
             os.system("mv highscore1.txt highscore.txt")
         
-        print(high)
+        #print(high)
         highest = font.render("Highest Score : " + str(high),True,black)
         gameDisplay.blit(highest,[round(0.6*displaywidth),0])
         pygame.display.update()
