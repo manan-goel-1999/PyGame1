@@ -13,6 +13,7 @@ pygame.display.set_caption('Slither')                                   #Make Su
 pygame.display.update()
 
 image = pygame.image.load('./snake.png')    #Get The Head
+apple = pygame.image.load('./apple.png')    #Get The Apple
 
 white = (255,255,255)       #give color as a tuple in order RGB
 red = (255,0,0)             #give color as a tuple in order RGB
@@ -206,7 +207,9 @@ def GameLoop():
             applesize = blocksize*2
         else:
             applesize = blocksize
-        pygame.draw.rect(gameDisplay,red,[circlex,circley,applesize,applesize])
+        #pygame.draw.rect(gameDisplay,red,[circlex,circley,applesize,applesize])
+
+        gameDisplay.blit(apple,(circlex,circley))
 
         head = []
 
