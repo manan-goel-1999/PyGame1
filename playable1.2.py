@@ -3,6 +3,7 @@ import random
 import time
 
 import pygame
+import cx_Freeze
 
 pygame.init()
 
@@ -38,6 +39,8 @@ def intro():
         MessageDisplay("Welcome To The Game",green,-100,"large")
         MessageDisplay("Press P to play and Q to Exit",red,-50,"medium")
         MessageDisplay("You will die if you run into yourself!",white,-25)
+        MessageDisplay("Use arrow keys to Navigate The Snake",white,0)
+        MessageDisplay("Press Space Bar to Pause and Q to quit",white,30)
         pygame.display.update()
         #clock.tick(15)
         for event in pygame.event.get():
@@ -95,15 +98,18 @@ pause = False
 
 def pausegame(pause):                                                 #Function to Pause Game                  
     while pause is True:                                              #Function to Pause Game
-        TextSurface, TextRect = text_object("Game Paused Press R to Resume",red)
+        TextSurface, TextRect = text_object("Game Paused, Press R to Resume and Q to Quit",red,"medium")
         TextRect.center = (displaywidth/2), (displayheight/4)
         gameDisplay.blit(TextSurface,TextRect)
         pygame.display.update()
         for event in pygame.event.get():                              #Function to Pause Game  
-            print(event)                                              #Function to Pause Game
+            #print(event)                                              #Function to Pause Game
             if event.key == pygame.K_r:                               #Function to Pause Game
                 pause = False                                         #Function to Pause Game
-                return                                                #Function to Pause Game
+                return
+            if event.key == pygame.K_q:
+                pygame.quit()
+                quit()                                                #Function to Pause Game
 
 #Actual Game Loop
 def GameLoop():
