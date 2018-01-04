@@ -14,11 +14,14 @@ pygame.display.update()
 
 image = pygame.image.load('./snake.png')    #Get The Head
 apple = pygame.image.load('./apple.png')    #Get The Apple
+icon = pygame.image.load('./apple.png')
+
+pygame.display.set_icon(icon)                   #Set Display Icon
 
 white = (255,255,255)       #give color as a tuple in order RGB
 red = (255,0,0)             #give color as a tuple in order RGB
 black = (0,0,0)             #give color as a tuple in order RGB
-green = (0,255,0)
+green = (0,155,0)
 
 smfont = pygame.font.SysFont("comicsansms",25)         #Make Font Object
 midfont = pygame.font.SysFont("comicsansms",40)         #Make Font Object
@@ -85,7 +88,7 @@ def snake(blocksize,snakebody):
     gameDisplay.blit(head, (snakebody[-1][0], snakebody[-1][1]))
 
     for block in snakebody[:-1]:
-        pygame.draw.rect(gameDisplay,black,[block[0],block[1],blocksize,blocksize])
+        pygame.draw.rect(gameDisplay,green,[block[0],block[1],blocksize,blocksize])
 
 pause = False
 
