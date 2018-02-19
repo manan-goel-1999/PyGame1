@@ -150,7 +150,7 @@ def GameLoop():
                         game = False
                         GameOver = False
                     if event.key == pygame.K_a:
-                        GameLoop()
+                        intro()
                 if event.type == pygame.QUIT:
                     game = False
         
