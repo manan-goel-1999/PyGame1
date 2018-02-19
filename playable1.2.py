@@ -3,7 +3,7 @@ import random
 import time
 
 import pygame
-import cx_Freeze
+#import cx_Freeze
 
 pygame.init()
 
@@ -134,7 +134,7 @@ def GameLoop():
     high = highscore.readline()
     #print(high)
     high = int(high)
-
+    #print(type(high))
     while game:
         global direction
         global pause
